@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Chat Application</title>
+    </head>
+
+    
+<body>
+<script src="./socket.io.js"></script>
+<script src="./jquery-3.4.1.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+    const url = "http://127.0.0.1:5000";
+    var socket = io.connect(url)
+
+    var username = "Nguyen Huu Hieu";
+    var password = "123456";
+
+    // socket.on("connect", function() {
+    //     console.log("try connect to server")
+    //     socket.emit("login", {username, password})
+    // })
+
+    socket.on("event", function(msg) {
+        console.log("recieve from server", msg)
+    })
+    // socket.on("connect", function() {
+    //     socket.emit("event", {msg: "Hello, I want to join in event"})
+        
+    // })
+
+    // socket.on("event_msg", function(msg) {
+    //     console.log("recieve message from event_msg", msg)
+    // })
+    
+    
+    // sio.on("message", function(msg) {
+    //     console.log("recieve", msg)
+    //     $("#message").append('<li>' + msg +'</li>');
+    // })
+
+    // // Sent to server
+    // $("#sendbutton").click(function() {
+    //     var myMessage = $("#myMessage").val()
+    //     sio.send(myMessage)
+    //     console.log("send to server", myMessage)
+    // })
+
+    // // Sent to server
+    // $("#disconnect").click(function() {
+    //     var myMessage = "dissconneted"
+    //     sio.send(myMessage)
+    // })
+
+})
+</script>
+
+<div>Welcome to chat application</div>
+<input type="text" id="myMessage">
+<button id="sendbutton">Send</button>
+<button id="disconnect">disconnect</button>
+
+<ul id="message"></ul>
+</body>
+</html>
